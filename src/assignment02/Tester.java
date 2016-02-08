@@ -1,8 +1,9 @@
 package assignment02;
 
+import java.util.Arrays;
+
 public class Tester 
 {
-	@SuppressWarnings("null")
 	public static void main(String[] args)
 	{
 		//countNulls test
@@ -155,17 +156,18 @@ public class Tester
 		
 		
 		//InstanceMethodVersion tests
-		InstanceMethodVersion test1 = null;
+		InstanceMethodVersion test1 = new InstanceMethodVersion(null);
 		InstanceMethodVersion test2 = new InstanceMethodVersion("");
 		InstanceMethodVersion test3 = new InstanceMethodVersion("word");
 		InstanceMethodVersion test4 = new InstanceMethodVersion("  word   ");
 		InstanceMethodVersion test5 = new InstanceMethodVersion("     ");
-		InstanceMethodVersion test6 = new InstanceMethodVersion("    This is my sentence    ");
-		InstanceMethodVersion test7 = new InstanceMethodVersion("This is my sentence");
+		InstanceMethodVersion test6 = new InstanceMethodVersion("    This   is my sentence    ");
+		InstanceMethodVersion test7 = new InstanceMethodVersion("This is my   sentence");
 		InstanceMethodVersion test8 = new InstanceMethodVersion("    This    is   my        sentence    ");
+		InstanceMethodVersion test9 = new InstanceMethodVersion("This is a sentence with many words");
 		
 		//InstanceMethodVersion countSpaces test
-		System.out.println("\n\ncountSpaces test");
+		System.out.println("\n\nInstanceMethodVersion countSpaces test");
 		System.out.println("Expected value -1");
 		System.out.println(test1.countSpaces());
 		System.out.println("Expected value 0");
@@ -176,7 +178,7 @@ public class Tester
 		System.out.println(test4.countSpaces());
 		
 		//InstanceMethodVersion first test
-		System.out.println("\n\nfirst test");
+		System.out.println("\n\nInstanceMethodVersion first test");
 		System.out.println("Expected value null");
 		System.out.println(test1.first());
 		System.out.println("Expected value \"\"");
@@ -192,5 +194,73 @@ public class Tester
 		System.out.println("Expected value \"This\"");
 		System.out.println(test7.first());
 		
+		//InstanceMethodVersion rest test
+		System.out.println("\n\nInstanceMethodVersion rest test");
+		System.out.println("Expected value null");
+		System.out.println(test1.rest());
+		System.out.println("Expected value \"\"");
+		System.out.println(test2.rest());
+		System.out.println("Expected value \"\"");
+		System.out.println(test5.rest());
+		System.out.println("Expected value \"\"");
+		System.out.println(test4.rest());
+		System.out.println("Expected value \"\"");
+		System.out.println(test3.rest());
+		System.out.println("Expected value \"is my sentence\"");
+		System.out.println(test6.rest());
+		System.out.println("Expected value \"is my sentence\"");
+		System.out.println(test7.rest());
+		
+		//InstanceMethodVersion withoutExtraSpaces test
+		System.out.println("\n\nInstanceMethodVersion withoutExtraSpaces test");
+		System.out.println("Expected value \"word\""); //testing first withouExtraSpaces
+		System.out.println(test3.withoutExtraSpaces());
+		System.out.println("Expected value \"word\"");
+		System.out.println(test4.withoutExtraSpaces());
+		System.out.println("Expected value \"is my sentence\""); //testing rest withoutExtraSpaces
+		test6 = new InstanceMethodVersion(test6.withoutExtraSpaces());
+		System.out.println(test6.rest());
+		test6 = new InstanceMethodVersion("    This   is my sentence    ");
+		System.out.println("Expected value \"is my sentence\"");
+		test7 = new InstanceMethodVersion(test7.withoutExtraSpaces());
+		System.out.println(test7.rest());
+		test7 = new InstanceMethodVersion("This is my   sentence");
+		
+		//InstanceMethodVersion splitOnSpaces test
+		System.out.println("\n\nInstanceMethodVersion splitOnSpaces test");
+		System.out.println("Expected value null");
+		System.out.println(test1.splitOnSpaces());
+		test1 = new InstanceMethodVersion(null);
+		System.out.println("Expected value ||");
+		testArr = test2.splitOnSpaces();
+		test2 = new InstanceMethodVersion("");
+		System.out.print("|");
+		for(String s: testArr)
+			System.out.print(s + "|");
+		System.out.println();
+		System.out.println("Expected value |This|is|a|sentence|with|many|words|");
+		testArr = test9.splitOnSpaces();
+		test9 = new InstanceMethodVersion("This is a sentence with many words");
+		System.out.print("|");
+		for(String s: testArr)
+			System.out.print(s + "|");
+		System.out.println();
+		
+		//InstanceMethodVersion splitOnSpaces1 test
+		System.out.println("\n\nInstanceMethodVersion splitOnSpaces1 test");
+		System.out.println("Expected value null");
+		System.out.println(test1.splitOnSpaces1());
+		System.out.println("Expected value |");
+		testArr = test2.splitOnSpaces1();
+		System.out.print("|");
+		for(String s: testArr)
+			System.out.print(s + "|");
+		System.out.println();
+		System.out.println("Expected value |This|is|a|sentence|with|many|words|");
+		testArr = test9.splitOnSpaces1();
+		System.out.print("|");
+		for(String s: testArr)
+			System.out.print(s + "|");
+		System.out.println();		
 	}
 }
