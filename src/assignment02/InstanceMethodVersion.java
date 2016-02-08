@@ -107,7 +107,6 @@ public class InstanceMethodVersion
 	
 	public String[] splitOnSpaces1()
 	{
-		System.out.println(string);
 		String[] retVal = null;
 		if (string != null) 
 		{
