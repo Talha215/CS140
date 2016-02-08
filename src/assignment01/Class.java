@@ -14,8 +14,6 @@ public class Class
 		number = aNumber;
 		numCredits = aNumCredits;
 		crn = aCrn;
-		
-		DUMMY_CLASS.qualPoints = 0.0;
 	}
 	
 	public String getName() 		{return name;}
@@ -24,7 +22,7 @@ public class Class
 	public int getCrn() 			{return crn;}
 	public double getQualPoints() 	{return qualPoints;}
 	
-	public void setQualPoints(double qualPoints) {qualPoints = this.qualPoints;}
+	public void setQualPoints(double qualPoints) {this.qualPoints = qualPoints;}
 	
 	
 }

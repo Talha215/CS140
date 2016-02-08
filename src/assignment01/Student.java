@@ -10,7 +10,7 @@ public class Student
 	
 	public Student(Person self)
 	{
-		self = this.self;
+		this.self = self;
 	}
 	
 	public void setQualPoints1(double qPoints) 
@@ -38,13 +38,25 @@ public class Student
 		return self.getFirstName() + " " + self.getMiddleInitial() + ". " + self.getLastName();
 	}
 	
+	public double computeSemesterGPA()
+	{
+		double gpa = 0.0;
+		double totalPoints = class1.getQualPoints() + class2.getQualPoints() + class3.getQualPoints() + class4.getQualPoints();
+		int totalCredits = class1.getNumCredits() + class2.getNumCredits() + class3.getNumCredits() + class4.getNumCredits();
+		
+		if(totalCredits > 0)
+			gpa = totalPoints / totalCredits;
+		
+		return gpa;
+	}
+	
 	public Class getClass1() {return class1;}
 	public Class getClass2() {return class2;}
 	public Class getClass3() {return class3;}
 	public Class getClass4() {return class4;}
 	
-	public void setClass1(Class class1) {class1 = this.class1;}
-	public void setClass2(Class class1) {class2 = this.class2;}
-	public void setClass3(Class class1) {class3 = this.class3;}
-	public void setClass4(Class class1) {class4 = this.class4;}
+	public void setClass1(Class class1) {this.class1 = class1;}
+	public void setClass2(Class class2) {this.class2 = class2;}
+	public void setClass3(Class class3) {this.class3 = class3;}
+	public void setClass4(Class class4) {this.class4 = class4;}
 }
