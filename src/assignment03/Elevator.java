@@ -114,6 +114,8 @@ public class Elevator
 		}
 		
 		Passenger[] temp = new Passenger[occupants.size()];
+		for(int i = 0; i < temp.length; i++)
+			 temp[i] = occupants.get(i);
 		
 		for(Passenger p: temp)
 			if(getFloorIndex(p.getDestinationFloor()) == currentFloor)
