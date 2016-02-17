@@ -26,6 +26,9 @@ public class Elevator
 	public ArrayList<Line> getLines() { return lines; }
 	public int getNumOccupants() { return occupants.size(); }
 	
+	/**
+	 * fix the way this works, k?
+	 */
 	public String getFloorName(int index)
 	{
 		if(index < 0 || index >= numFloors) 
@@ -61,10 +64,8 @@ public class Elevator
 			return "B3";
 		else if(index == groundFloor - 4)
 			return "B4";
-		else if(index == groundFloor - 5)
-			return "B5";
 		else
-			return "";
+			return "B5";
 	}
 	
 	public int getFloorIndex(String floor)
@@ -74,8 +75,8 @@ public class Elevator
 		
 		if(floor.startsWith("B"))
 			return Integer.parseInt(floor.substring(1)) - groundFloor;
-		else
-			return Integer.parseInt(floor); //not DONE
+		
+		return groundFloor + Integer.parseInt(floor) - 1;		
 			
 	}
 	
@@ -93,6 +94,34 @@ public class Elevator
 	{
 		int floor = getFloorIndex(flr);
 		lines.set(floor, ln);
+	}
+	
+	public void move()
+	{
+		if(currentDir == Direction.UP && currentFloor < numFloors - 1)
+			currentFloor++;
+		else if(currentDir == Direction.UP && currentFloor == numFloors - 1)
+		{
+			currentDir = Direction.DOWN;
+			currentFloor--;
+		}
+		else if(currentDir == Direction.DOWN && currentFloor > 0)
+			currentFloor--;
+		else if(currentDir == Direction.DOWN && currentFloor == 0)
+		{
+			currentDir = Direction.UP;
+			currentFloor++;
+		}
+		
+		Passenger[] temp = new Passenger[occupants.size()];
+		
+		for(Passenger p: temp)
+			if(getFloorIndex(p.getDestinationFloor()) == currentFloor)
+				occupants.remove(p);
+		
+		if(lines.get(currentFloor) != null)
+			lines.get(currentFloor).loadElevator();
+		
 	}
 	
 }
