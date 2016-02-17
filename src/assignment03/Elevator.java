@@ -68,13 +68,19 @@ public class Elevator
 			return "B5";
 	}
 	
+	/**
+	 * This method will convert the STRING of the floor name to the correct index of that floor.
+	 * EX: "B3" turns to 2 in a system that goes from "B5" as the bottom floor (index 0).
+	 * @param <floor> This is the STRING of the floor name. User friendly nomenclature.
+	 * @return Index of the floor requested. Works with indices. Not user friendly.
+	 */
 	public int getFloorIndex(String floor)
 	{
 		if(floor.equals("G"))
 			return groundFloor;
 		
 		if(floor.startsWith("B"))
-			return Integer.parseInt(floor.substring(1)) - groundFloor;
+			return groundFloor - Integer.parseInt(floor.substring(1));
 		
 		return groundFloor + Integer.parseInt(floor) - 1;		
 			
@@ -96,6 +102,13 @@ public class Elevator
 		lines.set(floor, ln);
 	}
 	
+	/**
+	 * This method moves the elevator UP or DOWN ONE FLOOR based on 
+	 * the current direction of the elevator and the actual floor the elevator is on.
+	 * The elevator "turns around" when it reaches the top of the building or the bottom.
+	 * Once it moves to a new floor, the elevator lets off the people that need to leave on that floor
+	 * and lets on anyone in the line on that floor that agrees with the direction the elevator is going.
+	 */
 	public void move()
 	{
 		if(currentDir == Direction.UP && currentFloor < numFloors - 1)
