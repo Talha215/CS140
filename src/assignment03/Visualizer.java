@@ -27,7 +27,7 @@ public class Visualizer
 		lineB4.getLine().add(new Passenger("B1", elev));
 		
 		line.loadElevator();
-		for(int i = 0; i < 36; i++) 
+		for(int i = 0; i < 35; i++) 
 		{
 			showElev(elev);
 			elev.move();
