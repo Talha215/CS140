@@ -14,14 +14,14 @@ import java.util.function.UnaryOperator;
 public class TownList implements List<Town>{
 	private ArrayList<Town> list = new ArrayList<>();
 
-	public boolean add(Town e) {
+	public boolean add(Town e){
 		if(list.contains(e))
 			return false;
 		list.add(e);
 		return true;
 	}
 	public void add(int index, Town element) {
-		if(!list.contains(element))
+		if(!list.contains(element) && index <= list.size())
 			list.add(index, element);
 	}
 	public boolean addAll(Collection<? extends Town> c) {
@@ -31,24 +31,20 @@ public class TownList implements List<Town>{
 		return list.size() > oldSize;
 	}
 	
-	/**
-	 * ASK QUESTION ABOUT THIS
-	 */
 	public boolean addAll(int index, Collection<? extends Town> c) {
-// TODO again track the size of list. This one is even trickier. Use for(Town t : c) 
-// and for each t use add(index, t) above. Only IF the list gets bigger by 1, then increase index by 1
-// and add the next element. Return true if overall list has increased in size otherwise false
 		int oldSize = list.size();
 		
+		int size1 = oldSize;
 		for(Town t: c)
-		{
+		{			
 			add(index, t);
-			if(list.size() + 1 == oldSize)
+			if(list.size() > size1)
+			{
 				index++;
-			else
-				return false;
+				size1 = list.size();
+			}
 		}
-		return true;
+		return list.size() > oldSize;
 	}
 	public void clear() {
 		list.clear();
