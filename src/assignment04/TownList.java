@@ -15,19 +15,20 @@ public class TownList implements List<Town>{
 	private ArrayList<Town> list = new ArrayList<>();
 
 	public boolean add(Town e){
-		if(list.contains(e))
+		if(e == null || list.contains(e))
 			return false;
 		list.add(e);
 		return true;
 	}
 	public void add(int index, Town element) {
-		if(!list.contains(element) && index <= list.size())
+		if(element != null && (!list.contains(element) && index <= list.size()))
 			list.add(index, element);
 	}
 	public boolean addAll(Collection<? extends Town> c) {
 		int oldSize = list.size();
 		for(Town t: c)
-			add(t);
+			if(t != null)
+				add(t);
 		return list.size() > oldSize;
 	}
 	
@@ -36,8 +37,9 @@ public class TownList implements List<Town>{
 		
 		int size1 = oldSize;
 		for(Town t: c)
-		{			
-			add(index, t);
+		{		
+			if(t != null)
+				add(index, t);
 			if(list.size() > size1)
 			{
 				index++;
