@@ -23,26 +23,33 @@ public class ShuffleTest
 				for(int i = 0; i < count; i++)
 						list.add(i);
 				
-				//int[][] counters = new int[][];
-				for(int i = 0; i < 100; i++)
-				{
+				int[][] counters = new int[count][count];
+				int sum = 0;
+				for(int i = 0; i < count; i++)
+				{	
 					Collections.shuffle(list);
-					for(int j = 0; j < 100; j++)
-					{
-						
+					for(int j = 0; j < count; j++)
+					{		
+						sum += list.get(i);
+						counters[i][j] = list.get(j);
+						System.out.print(counters[i][j] + "\t");
 					}
-					System.out.println(list);
+					System.out.println();
+					//System.out.println(list);
 				}
 				
 				
 				
-				/*double mean = ...
+				double mean = sum / (count*count);
 				System.out.println(mean);
 				output.println("Mean = " + mean);
 				double sDev = 0.0;
-				...
+				
+				for(int i = 0; i < count; i++)
+					for(int j = 0; j < count; j++)
+						sDev = (counters[i][j] - mean) * (counters[i][j] - mean) ;
 				System.out.println(sDev);
-				output.println("Standard Deviation = " + sDev);*/			
+				output.println("Standard Deviation = " + sDev);			
 			} catch (IOException e) {
 				System.out.println("IO exception");
 			}
