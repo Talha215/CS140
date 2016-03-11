@@ -16,7 +16,14 @@ public abstract class PizzaTopping implements Pizza {
 	}
 
 	public String getDescription() {
-		return getClass().getSimpleName() + " on " + on.getDescription();
+		String s = getClass().getSimpleName();
+		
+		if(on instanceof PizzaTopping)
+			s += ", " + on.getDescription();
+		else
+			s += " on " + on.getDescription();
+		
+		return s;
 	}
 	
 	public int compareTo(Pizza p) {
