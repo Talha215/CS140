@@ -1,6 +1,6 @@
 package assignment05;
 
-public class Driver {
+public class PCDriver {
 	
 	public static void main(String[] args) {
 		Parent p = new Parent();
