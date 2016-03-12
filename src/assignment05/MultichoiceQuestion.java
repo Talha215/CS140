@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class MultiChoiceQuestion extends Question {
-	private ArrayList<String> choices;
-	private ArrayList<Integer> correctChoices;
+public class MultichoiceQuestion extends Question {
+	private ArrayList<String> choices = new ArrayList<String>();
+	private ArrayList<Integer> correctChoices = new ArrayList<Integer>();
 	
-	public MultiChoiceQuestion(String questionText) {
+	public MultichoiceQuestion(String questionText) {
 		super(questionText);
 	}
 	
@@ -28,6 +28,17 @@ public class MultiChoiceQuestion extends Question {
 	@Override
 	public String prompt() {
 		return "Your answers (if more than one, separate answers by spaces): ";
+	}
+	
+	@Override
+	public void display() {
+		// Display the question text
+		super.display();
+		// Display the answer choices
+		for (int i = 0; i < choices.size(); i++) {
+			int choiceNumber = i + 1;
+			System.out.println(choiceNumber + ": " + choices.get(i));     
+		}
 	}
 	
 	@Override
