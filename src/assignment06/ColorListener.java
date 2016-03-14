@@ -19,8 +19,7 @@ public class ColorListener implements ActionListener {
 		
 		for(Box box: graphic.getList()) {
 			box.setColor(newColor);
-			graphic.callRepaint();
 		}
-		
+		graphic.callRepaint();
 	}
 }

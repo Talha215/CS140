@@ -16,15 +16,15 @@ public class Driver1 {
 					b4 = new Box(),
 					b5 = new Box();
 				
-				b1.setBox(new Rectangle2D.Double(1, 1, 5, 5));
+				b1.setBox(new Rectangle2D.Double(0, 0, 5, 10));
 				b1.setColor(Color.GREEN);
-				b2.setBox(new Rectangle2D.Double(1, 1, 10, 10));
+				b2.setBox(new Rectangle2D.Double(0, 0, 10, 20));
 				b2.setColor(Color.GREEN);
-				b3.setBox(new Rectangle2D.Double(1, 1, 20, 20));
+				b3.setBox(new Rectangle2D.Double(0, 0, 20, 40));
 				b3.setColor(Color.GREEN);
-				b4.setBox(new Rectangle2D.Double(1, 1, 30, 30));
+				b4.setBox(new Rectangle2D.Double(0, 0, 30, 60));
 				b4.setColor(Color.GREEN);
-				b5.setBox(new Rectangle2D.Double(1, 1, 40, 40));
+				b5.setBox(new Rectangle2D.Double(0, 0, 40, 80));
 				b5.setColor(Color.GREEN);
 				
 				list.add(b1);
