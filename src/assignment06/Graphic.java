@@ -27,9 +27,9 @@ public class Graphic {
 		makeRow1ButtonsWithListeners();
 		makeRow2ButtonsWithListeners();
 		
-		for(JButton[] row : buttons) {
-			for(JButton b : row) {
-				panel.add(b);
+		for(int i = 0; i < 2; i++) {
+			for(int j = 0; j < 4; j++) {
+				panel.add(buttons[i][j]);
 			}
 		}
 		
@@ -75,14 +75,14 @@ public class Graphic {
 	}
 	
 	private void makeRow1ButtonsWithListeners() {
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 4; i++) {
 			buttons[0][i] = new JButton(names[i]);
 		}
 		buttons[0][0].addActionListener(new ColorListener(this));
 	}
 	
 	private void makeRow2ButtonsWithListeners() {
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 4; i++) {
 			buttons[1][i] = new JButton(names[i]);
 		}
 	}

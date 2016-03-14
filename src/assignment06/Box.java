@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Box {
 	private Color color;
-	private Rectangle2D box;
+	private Rectangle2D.Double box;
 	
 	public Color getColor() {
 		return color;
@@ -15,11 +15,11 @@ public class Box {
 		this.color = color;
 	}
 	
-	public Rectangle2D getBox() {
+	public Rectangle2D.Double getBox() {
 		return box;
 	}
 	
-	public void setBox(Rectangle2D box) {
+	public void setBox(Rectangle2D.Double box) {
 		this.box = box;
 	}
 }

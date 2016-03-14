@@ -32,7 +32,7 @@ public class BoxArea extends JComponent{
 		
 		for(Box box : list) {
 			g2.setColor(box.getColor());
-			Rectangle2D.Double r = (Double) box.getBox();
+			Rectangle2D.Double r = box.getBox();
 			r.setRect(curXOff, curYOff, r.getWidth(), r.getHeight());
 			g2.fill(r);
 			g2.setColor(Color.BLACK);

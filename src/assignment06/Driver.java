@@ -1,6 +1,6 @@
 package assignment06;
 
-public class Driver0 {
+public class Driver {
 	public static void main(String[] args) {
 		Parent p = new Parent("Jennie");
 		p.print();
