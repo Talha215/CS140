@@ -10,6 +10,16 @@ public class HarpurAudit implements DegreeAudit {
 	
 	@Override
 	public boolean writingSatisfied(ArrayList<CourseOffering> list) {
-		return true;
+		int wCounter = 0, cjCounter = 0;
+		for(CourseOffering c: list) 
+			for(String s: c.getAnnotations())
+				if(s.equals("W"))
+					wCounter++;
+				else if(s.equals("C") || s.equals("J"))
+					cjCounter++;
+
+		return (wCounter > 2 && cjCounter > 1) ||
+			   (wCounter > 0 && cjCounter > 2) ||
+			   (cjCounter > 3);
 	}
 }

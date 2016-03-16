@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 
 public class BoxArea extends JComponent{
+	private static final long serialVersionUID = -2356054430147906086L;
 	private ArrayList<Box> list;
 	
 	public ArrayList<Box> getList() {

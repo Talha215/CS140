@@ -10,6 +10,12 @@ public class SOMAudit implements DegreeAudit {
 	
 	@Override
 	public boolean writingSatisfied(ArrayList<CourseOffering> list) {
-		return true;
+		int cjCounter = 0;
+		for(CourseOffering c: list) 
+			for(String s: c.getAnnotations())
+				if(s.equals("C") || s.equals("J"))
+					cjCounter++;
+
+		return cjCounter > 1;
 	}
 }
