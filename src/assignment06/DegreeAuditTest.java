@@ -56,7 +56,46 @@ public class DegreeAuditTest {
 	
 	@Test
 	public void csTest() {
-		//fail("Not yet implemented");
+		ArrayList<CourseOffering> list = new ArrayList<CourseOffering>();
+		CSAudit ca = new CSAudit();
+		
+		list.add(new CourseOffering("WRIT111", "Coming to Voice", 201620, new ArrayList<String>(Arrays.asList("J"))));
+		list.add(new CourseOffering("name1", "title1", 201620, new ArrayList<String>(Arrays.asList("A"))));
+		list.add(new CourseOffering("name2", "title2", 201620, new ArrayList<String>(Arrays.asList("L"))));
+		list.add(new CourseOffering("name3", "title3", 201620, new ArrayList<String>(Arrays.asList("M"))));
+		list.add(new CourseOffering("CS301", "title4", 201620, new ArrayList<String>(Arrays.asList("B"))));
+		assertFalse(ca.writingSatisfied(list));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("A", "C"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("W", "B"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("F", "J"))));
+		assertTrue(ca.writingSatisfied(list));
+		list.remove(7);
+		list.remove(6);
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("W", "A"))));
+		assertFalse(ca.writingSatisfied(list));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("J", "B"))));
+		assertTrue(ca.writingSatisfied(list));
+		list.clear();
+		
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("W", "F"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("W", "B"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("W", "A"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("F", "J"))));
+		assertFalse(ca.writingSatisfied(list));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("J", "G"))));
+		assertTrue(ca.writingSatisfied(list));
+		
+		list.clear();
+		assertFalse(ca.writingSatisfied(list));
+		
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("J", "G"))));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("C", "H"))));
+		assertFalse(ca.writingSatisfied(list));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("J", "A"))));
+		assertFalse(ca.writingSatisfied(list));
+		list.add(new CourseOffering("name", "title", 201620, new ArrayList<String>(Arrays.asList("L", "C"))));
+		assertTrue(ca.writingSatisfied(list));
+		list.clear();
 	}
 	
 	@Test
