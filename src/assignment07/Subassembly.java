@@ -1,5 +1,7 @@
 package assignment07;
 
-public class Subassembly extends Product {
+import java.util.ArrayList;
 
+public class Subassembly extends Product {
+	ArrayList<Product> parts = new ArrayList<Product>();
 }
