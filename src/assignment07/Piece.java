@@ -30,4 +30,9 @@ public class Piece extends Product {
 	public void setManufactureTime(double manufactureTime) {
 		this.manufactureTime = manufactureTime;
 	}
+
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);	
+	}
 }

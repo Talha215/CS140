@@ -46,4 +46,9 @@ public class Subassembly extends Product {
 	public void add(Product p) {
 		parts.add(p);
 	}
+	
+	@Override
+	public void accept(Visitor v) {
+		v.visit(this);	
+	}
 }

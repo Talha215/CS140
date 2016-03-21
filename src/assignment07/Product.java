@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class Product implements Iterable<Product> {
+public abstract class Product implements Iterable<Product>, Comparable<Product> {
 	private String description;
 	private int indent;
 	
@@ -53,4 +53,8 @@ public abstract class Product implements Iterable<Product> {
 		
 		return sb.toString();
 	}
+	
+	abstract void accept(Visitor v);
+	
+	abstract int compareTo(Product other);
 }
