@@ -87,7 +87,7 @@ public class Test1 {
 	
 	@Test
 	public void printTest() {
-		for(Product p : assembly[0]) System.out.println(p.toString() + ": Cost = " + p.getCost()
+		for(Product p : assembly[0]) System.out.println(p + ": Cost = " + p.getCost()
 				+ ", Manufacture time = " + p.getManufactureTime());
 		testCostIncreaseVisitor();
 		testMaunfactureTimeIncreaseVisitor();
@@ -98,7 +98,7 @@ public class Test1 {
 		Visitor v = new CostIncreaseVisitor(50);
 		for(Product p : assembly[0]) p.accept(v);
 		System.out.println("\nIncreasing cost by 50%\n");
-		for(Product p: assembly[0]) System.out.println(p.toString() + ": Cost = " + p.getCost()
+		for(Product p: assembly[0]) System.out.println(p + ": Cost = " + p.getCost()
 		+ ", Manufacture time = " + p.getManufactureTime());
 	}
 	
@@ -107,7 +107,15 @@ public class Test1 {
 		Visitor v = new ManufactureTimeIncreaseVisitor(-25);
 		for(Product p : assembly[0]) p.accept(v);
 		System.out.println("\nDecreasing manufactureTime by 25%\n");
-		for(Product p: assembly[0]) System.out.println(p.toString() + ": Cost = " + p.getCost()
+		for(Product p: assembly[0]) System.out.println(p + ": Cost = " + p.getCost()
 				+ ", Manufacture time = " + p.getManufactureTime());
+	}
+	
+	@Test
+	public void sortTest() {
+		Visitor v = new Sorter();
+		for(Product p : assembly[0]) p.accept(v);
+		System.out.println("\nSorting\n");
+		for(Product p: assembly[0]) System.out.println(p);
 	}
 }

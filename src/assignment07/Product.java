@@ -56,5 +56,12 @@ public abstract class Product implements Iterable<Product>, Comparable<Product> 
 	
 	abstract void accept(Visitor v);
 	
-	abstract int compareTo(Product other);
+	public int compareTo(Product other) {
+		if(this instanceof Piece && other instanceof Subassembly)
+			return -1;
+		if(this instanceof Subassembly && other instanceof Piece)
+			return 1;
+		return 0;
+		
+	}
 }

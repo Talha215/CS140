@@ -1,6 +1,7 @@
 package assignment07;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Subassembly extends Product {
@@ -50,5 +51,9 @@ public class Subassembly extends Product {
 	@Override
 	public void accept(Visitor v) {
 		v.visit(this);	
+	}
+
+	public void sort() {
+		Collections.sort(parts);
 	}
 }
