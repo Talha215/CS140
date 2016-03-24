@@ -112,10 +112,15 @@ public abstract class Product implements Iterable<Product>, Comparable<Product> 
 	
 	/**
 	 * This is abstract, so all subclasses must implement their own version.
-	 * @param v
+	 * @param v a Visitor object that is manipulated differently depending on which type of Product is being processed.
 	 */
 	abstract void accept(Visitor v);
 	
+	/**
+	 * Depending on the hierarchy of this and other object subtypes, this compares the two objects and returns which object overrides the other.
+	 * @param other the second item to compare this to.
+	 * @return int either -1, 0, or 1 depending on what types of objects these Products are.
+	 */
 	public int compareTo(Product other) {
 		if(this instanceof Piece && other instanceof Subassembly)
 			return -1;
