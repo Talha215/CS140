@@ -1,5 +1,5 @@
 package pippin;
-
+//test
 public class Code {
 	public static final int CODE_MAX = 256;
 	private long[] code = new long[CODE_MAX];
